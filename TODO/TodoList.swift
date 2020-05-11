@@ -11,38 +11,74 @@ import Combine
 
 struct TodoList: View {
     @ObservedObject var store = TaskStore()
-
+    @State var selectedIds: Set<UUID> = []
+    @State var title = ""
+    @State var des = ""
+    @State var period = ""
     
     var body: some View {
         
-        
-        
         NavigationView{
-            List {
-                ForEach(store.tasks) { task in
-                    TaskView(task: task)
+            List(selection: $selectedIds) {
+                Section {
+                    HStack {
+                        VStack {
+                            TextField("Title", text: self.$title)
+                            TextField("Description", text: self.$des)
+                            TextField("After", text: self.$period)
+
+                        }
+                        Button(action:  {
+                            self.addTask()
+                            self.title = ""
+                            self.des = ""
+                        } ) {
+                            Image(systemName: "plus.circle.fill")
+                                .foregroundColor(Color.green)
+                                .imageScale(.large)
+                        }
+                        .buttonStyle(PlainButtonStyle())
+                    }
                 }
-                .onDelete { index in
-                    self.store.tasks.remove(at: index.first!)
+                
+                
+                Section(header: self.store.tasks.isEmpty ? Text("") : Text("Active Tasks")) {
+                    ForEach(store.tasks) { task in
+                        TaskView(task: task)
+                    }
+                    .onDelete { index in
+                        self.store.tasks.remove(at: index.first!)
+                    }
+                }
+                Section(header: Text("Done Tasks")) {
+                    ForEach(store.doneTasks) { task in
+                        TaskView(task: task)
+                    }
                 }
             }
-                
-            .navigationBarItems(leading:
-                Button(action: addTask ) {
-                Text("Add Task")
+            .listStyle(GroupedListStyle())
+            .environment(\.horizontalSizeClass, .regular)
+            .environment(\.editMode, .constant(EditMode.active))
+            .navigationBarItems(trailing:
+                Button(action: { self.store.tasks.removeAll { (task) -> Bool in
+                    if self.selectedIds.contains(task.id){
+                        self.store.doneTasks.append(task)
+                        self.selectedIds.remove(task.id)
+                        return true
+                    }
+                    return false
+                    } }) {
+                        Image(systemName: "checkmark.circle.fill")
+                            .imageScale(.large)
+                            .foregroundColor(Color.red)
                 }
-                ,trailing: EditButton())
+            )
             .navigationBarTitle(Text("TODO"))
         }
-        
-        
-        
-        
-        
     }
     
     func addTask(){
-        store.tasks.append(.init(period: 2, category: "ICS 233", title: "Any thing", des: "hoho"))
+        self.store.tasks.append(.init(period: Int(self.period)!, title: self.title, des: self.des))
     }
 }
 
@@ -54,7 +90,7 @@ struct TodoList_Previews: PreviewProvider {
 
 struct TaskView: View {
     var task: Task
-
+    
     var body: some View {
         HStack {
             VStack(alignment: .leading, spacing: 10) {
@@ -79,10 +115,11 @@ struct TaskView: View {
             
         }
         .padding()
-        .padding(.vertical, 20)
     }
+    
+    
     func calculateImportance(period: Int) -> Text {
-        if period < 1{
+        if period <= 1{
             return Text("Urgent").foregroundColor(Color.red)
         }else if period < 4{
             return Text("Important").foregroundColor(Color.pink)
@@ -97,24 +134,20 @@ struct TaskView: View {
 struct Task: Identifiable {
     var id = UUID()
     var period: Int
-    var category: String
     var title: String
     var des: String
 }
 
 
 var tasksData: [Task] = [
-    .init(period: 2, category: "ICS 202", title: "Homework", des: "chapter 3"),
-    .init(period: 3, category: "ICS 233", title: "Homework", des: "chapter 5"),
-    .init(period: 4, category: "ICS 254", title: "Homework", des: "section 3"),
-    .init(period: 5, category: "ICS 202", title: "Quiz", des: "chapter 3")
+    .init(period: 2, title: "ICS 202", des: "Homework chapter 3"),
+    .init(period: 3, title: "ICS 233", des: "Quiz section 5"),
+    .init(period: 4, title: "ICS 254", des: "Report"),
 ]
 
 class TaskStore: ObservableObject{
-    @Published var tasks: [Task] = [
-        .init(period: 2, category: "ICS 202", title: "Homework", des: "chapter 3"),
-        .init(period: 3, category: "ICS 233", title: "Homework", des: "chapter 5"),
-        .init(period: 4, category: "ICS 254", title: "Homework", des: "section 3"),
-        .init(period: 5, category: "ICS 202", title: "Quiz", des: "chapter 3")
+    @Published var tasks: [Task] = tasksData
+    @Published var doneTasks: [Task] = [
+        .init(period: 5, title: "ICS 202", des: "Major II")
     ]
 }

@@ -13,7 +13,7 @@
 		17738AB82468E8BB008ADAAC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17738AB72468E8BB008ADAAC /* Assets.xcassets */; };
 		17738ABB2468E8BB008ADAAC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17738ABA2468E8BB008ADAAC /* Preview Assets.xcassets */; };
 		17738ABE2468E8BB008ADAAC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17738ABC2468E8BB008ADAAC /* LaunchScreen.storyboard */; };
-		17738AC62468EA14008ADAAC /* DashBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17738AC52468EA14008ADAAC /* DashBoardView.swift */; };
+		17738AC62468EA14008ADAAC /* AddTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17738AC52468EA14008ADAAC /* AddTaskView.swift */; };
 		17738AC82468EA3B008ADAAC /* TodoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17738AC72468EA3B008ADAAC /* TodoList.swift */; };
 /* End PBXBuildFile section */
 
@@ -26,7 +26,7 @@
 		17738ABA2468E8BB008ADAAC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		17738ABD2468E8BB008ADAAC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		17738ABF2468E8BB008ADAAC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		17738AC52468EA14008ADAAC /* DashBoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashBoardView.swift; sourceTree = "<group>"; };
+		17738AC52468EA14008ADAAC /* AddTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskView.swift; sourceTree = "<group>"; };
 		17738AC72468EA3B008ADAAC /* TodoList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -63,7 +63,7 @@
 				17738AB12468E8B8008ADAAC /* AppDelegate.swift */,
 				17738AB32468E8B8008ADAAC /* SceneDelegate.swift */,
 				17738AB52468E8B8008ADAAC /* ContentView.swift */,
-				17738AC52468EA14008ADAAC /* DashBoardView.swift */,
+				17738AC52468EA14008ADAAC /* AddTaskView.swift */,
 				17738AC72468EA3B008ADAAC /* TodoList.swift */,
 				17738AB72468E8BB008ADAAC /* Assets.xcassets */,
 				17738ABC2468E8BB008ADAAC /* LaunchScreen.storyboard */,
@@ -154,7 +154,7 @@
 			files = (
 				17738AC82468EA3B008ADAAC /* TodoList.swift in Sources */,
 				17738AB22468E8B8008ADAAC /* AppDelegate.swift in Sources */,
-				17738AC62468EA14008ADAAC /* DashBoardView.swift in Sources */,
+				17738AC62468EA14008ADAAC /* AddTaskView.swift in Sources */,
 				17738AB42468E8B8008ADAAC /* SceneDelegate.swift in Sources */,
 				17738AB62468E8B8008ADAAC /* ContentView.swift in Sources */,
 			);
