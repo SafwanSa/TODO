@@ -22,7 +22,6 @@ struct DoneTaskView: View {
             .listStyle(GroupedListStyle())
             .environment(\.horizontalSizeClass, .regular)
             .navigationBarTitle(Text("Done TODOs"))
-            
         }
     }
 }

@@ -27,7 +27,7 @@ struct TodoList: View {
                             TextField("Title", text: self.$title)
                             TextField("Description", text: self.$des)
                             TextField("After", text: self.$period)
-
+                            
                         }
                         Button(action:  {
                             self.addTask()
@@ -70,7 +70,7 @@ struct TodoList: View {
                             .foregroundColor(Color.red)
                 }
             )
-            .navigationBarTitle(Text("TODO"))
+                .navigationBarTitle(Text("TODO"))
         }
     }
     
@@ -97,33 +97,33 @@ struct TaskView: View {
                     .font(.subheadline)
                     .lineLimit(2)
             }
-            
             Spacer()
-            
-            VStack(alignment: .center) {
-                calculateImportance(period: self.task.period)
-                    .font(.system(size: 13, weight: .medium))
-                    .foregroundColor(.secondary)
-                    .multilineTextAlignment(.center)
-                    .padding(5)
-            }
-            .frame(width: 80, height: 70)
-            
-            
         }
-        .padding()
+        .padding(.vertical, 16)
+        .overlay(
+            HStack {
+                Spacer()
+                VStack {
+                    calculateImportance(period: self.task.period)
+                        .clipShape(RoundedRectangle(cornerRadius: 10))
+                        .shadow(color: Color(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)).opacity(0.2), radius: 20, x: 0, y: 20)
+                }
+                .frame(width: 10)
+                .frame(maxHeight: .infinity)
+            }
+        )
     }
     
     
-    func calculateImportance(period: Int) -> Text {
+    func calculateImportance(period: Int) -> Color {
         if period <= 1{
-            return Text("Urgent").foregroundColor(Color.red)
-        }else if period < 4{
-            return Text("Important").foregroundColor(Color.pink)
+            return (Color.red)
+        }else if period < 3{
+            return (Color.red.opacity(0.5))
         }else if period < 6{
-            return Text("Better to do").foregroundColor(Color.green)
+            return (Color.green)
         }else{
-            return Text("Not Important").foregroundColor(Color.green)
+            return (Color.green)
         }
     }
 }
