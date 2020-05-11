@@ -7,10 +7,11 @@
 //
 
 import SwiftUI
-import Combine
+
 
 struct TodoList: View {
     @ObservedObject var store = TaskStore()
+    
     @State var selectedIds: Set<UUID> = []
     @State var title = ""
     @State var des = ""
@@ -32,6 +33,7 @@ struct TodoList: View {
                             self.addTask()
                             self.title = ""
                             self.des = ""
+                            self.period = ""
                         } ) {
                             Image(systemName: "plus.circle.fill")
                                 .foregroundColor(Color.green)
@@ -48,11 +50,6 @@ struct TodoList: View {
                     }
                     .onDelete { index in
                         self.store.tasks.remove(at: index.first!)
-                    }
-                }
-                Section(header: Text("Done Tasks")) {
-                    ForEach(store.doneTasks) { task in
-                        TaskView(task: task)
                     }
                 }
             }
@@ -145,9 +142,3 @@ var tasksData: [Task] = [
     .init(period: 4, title: "ICS 254", des: "Report"),
 ]
 
-class TaskStore: ObservableObject{
-    @Published var tasks: [Task] = tasksData
-    @Published var doneTasks: [Task] = [
-        .init(period: 5, title: "ICS 202", des: "Major II")
-    ]
-}

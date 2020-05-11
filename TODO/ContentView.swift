@@ -9,8 +9,19 @@
 import SwiftUI
 
 struct ContentView: View {
+    @ObservedObject var store = TaskStore()
+    
     var body: some View {
-        Text("Hello, World")
+        TabView {
+            TodoList(store: self.store).tabItem {
+                Image(systemName: "doc.plaintext")
+                Text("TODO")
+            }
+            DoneTaskView(store: self.store).tabItem{
+                Image(systemName: "checkmark.rectangle.fill")
+                Text("Done Tasks")
+            }
+        }
     }
 }
 
