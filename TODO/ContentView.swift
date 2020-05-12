@@ -19,7 +19,7 @@ struct ContentView: View {
             }
             DoneTaskView(store: self.store).tabItem{
                 Image(systemName: "checkmark.rectangle.fill")
-                Text("Done Tasks")
+                Text("Done TODOs")
             }
         }
     }

@@ -16,31 +16,49 @@ struct TodoList: View {
     @State var title = ""
     @State var des = ""
     @State var period = ""
+    private var showAdd: Bool {
+        !title.isEmpty && !des.isEmpty && !period.isEmpty
+    }
     
     var body: some View {
         
         NavigationView{
             List(selection: $selectedIds) {
-                Section {
+                Section(header:
+                    Group{
+                        if self.showAdd {
+                            Button(action:  {
+                                self.addTask()
+                                self.title = ""
+                                self.des = ""
+                                self.period = ""
+                            } ) {
+                                HStack {
+                                    Image(systemName: "plus.circle.fill")
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                        .frame(width: 20, height: 20)
+                                        .foregroundColor(Color.green)
+                                        .imageScale(.large)
+                                    Text("ADD")
+                                }
+
+                            }
+                            .buttonStyle(PlainButtonStyle())
+                        }
+                    }
+
+                    
+                    ) {
                     HStack {
-                        VStack {
+                        VStack(spacing: 20) {
                             TextField("Title", text: self.$title)
                             TextField("Description", text: self.$des)
                             TextField("After", text: self.$period)
                             
                         }
-                        Button(action:  {
-                            self.addTask()
-                            self.title = ""
-                            self.des = ""
-                            self.period = ""
-                        } ) {
-                            Image(systemName: "plus.circle.fill")
-                                .foregroundColor(Color.green)
-                                .imageScale(.large)
-                        }
-                        .buttonStyle(PlainButtonStyle())
                     }
+                    .animation(.spring())
                 }
                 
                 
