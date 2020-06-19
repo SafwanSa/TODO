@@ -17,7 +17,7 @@ struct ContentView: View {
                 Image(systemName: "doc.plaintext")
                 Text("TODO")
             }
-            DoneTaskView(store: self.store).tabItem{
+            DoneTaskView(store: self.store).tabItem {
                 Image(systemName: "checkmark.rectangle.fill")
                 Text("Done TODOs")
             }

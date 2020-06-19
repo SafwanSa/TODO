@@ -16,6 +16,7 @@
 		17738AC82468EA3B008ADAAC /* TodoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17738AC72468EA3B008ADAAC /* TodoList.swift */; };
 		17738ACA2469EC0F008ADAAC /* TaskData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17738AC92469EC0F008ADAAC /* TaskData.swift */; };
 		17738ACC2469ED94008ADAAC /* DoneTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17738ACB2469ED94008ADAAC /* DoneTaskView.swift */; };
+		179A0258246A48CD00830DA1 /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179A0257246A48CD00830DA1 /* SwiftUIView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		17738AC72468EA3B008ADAAC /* TodoList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoList.swift; sourceTree = "<group>"; };
 		17738AC92469EC0F008ADAAC /* TaskData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskData.swift; sourceTree = "<group>"; };
 		17738ACB2469ED94008ADAAC /* DoneTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneTaskView.swift; sourceTree = "<group>"; };
+		179A0257246A48CD00830DA1 /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +70,7 @@
 				17738AC72468EA3B008ADAAC /* TodoList.swift */,
 				17738AC92469EC0F008ADAAC /* TaskData.swift */,
 				17738ACB2469ED94008ADAAC /* DoneTaskView.swift */,
+				179A0257246A48CD00830DA1 /* SwiftUIView.swift */,
 				17738AB72468E8BB008ADAAC /* Assets.xcassets */,
 				17738ABC2468E8BB008ADAAC /* LaunchScreen.storyboard */,
 				17738ABF2468E8BB008ADAAC /* Info.plist */,
@@ -156,6 +159,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				17738AC82468EA3B008ADAAC /* TodoList.swift in Sources */,
+				179A0258246A48CD00830DA1 /* SwiftUIView.swift in Sources */,
 				17738AB22468E8B8008ADAAC /* AppDelegate.swift in Sources */,
 				17738AB42468E8B8008ADAAC /* SceneDelegate.swift in Sources */,
 				17738ACC2469ED94008ADAAC /* DoneTaskView.swift in Sources */,

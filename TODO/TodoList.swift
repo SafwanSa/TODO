@@ -11,19 +11,20 @@ import SwiftUI
 
 struct TodoList: View {
     @ObservedObject var store = TaskStore()
-    
     @State var selectedIds: Set<UUID> = []
     @State var title = ""
     @State var des = ""
     @State var period = ""
+    @State var date = Date()
+    
     private var showAdd: Bool {
         !title.isEmpty && !des.isEmpty && !period.isEmpty
     }
     
     var body: some View {
-        
         NavigationView{
             List(selection: $selectedIds) {
+                
                 Section(header:
                     Group{
                         if self.showAdd {
@@ -42,27 +43,23 @@ struct TodoList: View {
                                         .imageScale(.large)
                                     Text("ADD")
                                 }
-
                             }
                             .buttonStyle(PlainButtonStyle())
                         }
                     }
 
-                    
-                    ) {
+                ) {
                     HStack {
                         VStack(spacing: 20) {
                             TextField("Title", text: self.$title)
                             TextField("Description", text: self.$des)
-                            TextField("After", text: self.$period)
-                            
+//                            TextField("After", text: self.$period)
                         }
                     }
                     .animation(.spring())
                 }
                 
-                
-                Section(header: self.store.tasks.isEmpty ? Text("") : Text("Active Tasks")) {
+                Section(header: Text(self.store.tasks.isEmpty ? "You Don't have any tasks" : "Active Tasks")) {
                     ForEach(store.tasks) { task in
                         TaskView(task: task)
                     }
